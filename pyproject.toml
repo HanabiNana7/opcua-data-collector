@@ -1,0 +1,43 @@
+[project]
+name = "opcua-data-collector"
+version = "0.1.0"
+description = "A configurable OPC UA data collector for industrial devices."
+readme = "README.md"
+authors = [{ name = "HanabiNana7", email = "skyfly12401@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+opcua-data-collector = "opcua_data_collector:main"
+
+[build-system]
+requires = ["uv_build>=0.10.6,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = ["pytest>=9.1.1", "pytest-cov>=7.1.0", "ruff>=0.16.10"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--strict-config", "--strict-markers", "-ra"]
+
+[tool.coverage.run]
+branch = true
+source = ["opcua_data_collector"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
